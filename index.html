@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<title>ValoName - Stylish Gaming Names</title>
+
+<style>
+
+body{
+    background-image: url("bg.jpg");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    color:white;
+    font-family:Arial;
+    text-align:center;
+    padding:0;
+    margin:0;
+}
+
+/* Karartma */
+body::before{
+    content:"";
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0.65);
+    z-index:-1;
+}
+
+/* HEADER */
+.header{
+    padding:20px;
+}
+
+/* LOGO TEXT */
+.logo{
+    font-size:38px;
+    font-weight:bold;
+    color:#ff4655;
+}
+
+/* RGB SLOGAN */
+.rgb-text{
+    font-size:22px;
+    font-weight:bold;
+    margin-top:10px;
+
+    background: linear-gradient(
+        90deg,
+        red, orange, yellow, green, cyan, blue, violet, red
+    );
+
+    background-size:400%;
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+
+    animation:rgbMove 6s linear infinite;
+}
+
+@keyframes rgbMove{
+    0%{ background-position:0%; }
+    100%{ background-position:400%; }
+}
+
+/* REKLAM ALANLARI */
+.ad-left, .ad-right{
+    position:fixed;
+    top:120px;
+    width:120px;
+    height:600px;
+    background:rgba(255,255,255,0.05);
+    border-radius:10px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:14px;
+}
+
+.ad-left{ left:10px; }
+.ad-right{ right:10px; }
+
+/* MAIN */
+.main{
+    margin-top:40px;
+}
+
+input{
+    padding:14px;
+    width:260px;
+    border-radius:12px;
+    border:none;
+}
+
+button{
+    padding:14px 25px;
+    border:none;
+    border-radius:12px;
+    background:#ff4655;
+    color:white;
+    cursor:pointer;
+    margin-left:10px;
+    font-weight:bold;
+}
+
+.result{
+    margin-top:30px;
+}
+
+.nick{
+    background:rgba(30,41,59,0.85);
+    padding:14px;
+    margin:10px auto;
+    border-radius:12px;
+    width:320px;
+    cursor:pointer;
+    transition:0.2s;
+    backdrop-filter: blur(6px);
+}
+
+.nick:hover{
+    background:#ff4655;
+}
+
+.footer{
+    margin-top:60px;
+    padding:20px;
+    font-size:14px;
+    opacity:0.7;
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- REKLAM PLACEHOLDER -->
+<div class="ad-left">Reklam</div>
+<div class="ad-right">Reklam</div>
+
+<!-- HEADER -->
+<div class="header">
+    <div class="logo">ValoName</div>
+    <div class="rgb-text">Ne bekliyorsun ismini değiştirsene</div>
+</div>
+
+<!-- MAIN -->
+<div class="main">
+
+<input id="nickInput" placeholder="Nick yaz">
+<button onclick="generateNick()">Oluştur</button>
+
+<div class="result" id="result"></div>
+
+</div>
+
+<div class="footer">
+ValoName © 2026
+</div>
+
+<script>
+
+function generateNick(){
+
+let nick = document.getElementById("nickInput").value;
+
+let styles = [
+
+"꧁" + nick + "꧂",
+"乂" + nick + "乂",
+"ツ" + nick + "ツ",
+"『" + nick + "』",
+"么" + nick + "么",
+"★" + nick + "★",
+"彡" + nick + "彡",
+"亗" + nick + "亗",
+"⚡" + nick + "⚡",
+"☠" + nick + "☠",
+"♛" + nick + "♛",
+"∆" + nick + "∆",
+"Ø" + nick + "Ø",
+"Ξ" + nick + "Ξ",
+"《" + nick + "》",
+"【" + nick + "】",
+"✦" + nick + "✦",
+"✪" + nick + "✪",
+"☾" + nick + "☽"
+
+];
+
+let resultDiv = document.getElementById("result");
+resultDiv.innerHTML = "";
+
+styles.forEach(s => {
+
+let div = document.createElement("div");
+div.className="nick";
+div.innerText = s;
+
+div.onclick = () => {
+navigator.clipboard.writeText(s);
+alert("Kopyalandı!");
+}
+
+resultDiv.appendChild(div);
+
+});
+
+}
+
+</script>
+
+</body>
+</html>
